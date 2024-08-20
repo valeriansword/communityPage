@@ -61,6 +61,9 @@ function Community() {
   const [isOverlayOpen, setOverlayOpen] = useState(false);
   const [isshareOpen, setshareOpen] = useState(false);
 
+  const handleSend=()=>{
+    //this is for posting something
+  }
   return (
     // <div className='bg-[#f7d883] md:flex max-sm:w-[100%] max-sm:h-[100%] w-[100%]'>
     //     <SideBarCommunity />
@@ -71,7 +74,7 @@ function Community() {
       <SideBarCommunity />
 
       <div className="w-full  h-full   font-times bg-[#f7d883] p-2  ">
-      <div className="container mx-auto mb-[30px] rounded-lg max-sm:mx-[10px] max-sm:w-[100%] ">
+      <div className="container mx-auto mb-[30px] rounded-lg  max-sm:w-[100%] ">
          <Slider {...settings} >
             <div className="middle text-white">
               <div className="flex flex-col items-center w-full h-full justify-end space-y-[10px] pb-[10px]">
@@ -237,7 +240,7 @@ function Community() {
               <FaImage size="40" className="absolute right-[10px] ml-2" />
             </div>
           </form>
-          <span>
+          <span onClick={()=>handleSend()}>
             <IoIosSend size="40" />
           </span>
         </div>

@@ -5,6 +5,10 @@ import { IoClose } from "react-icons/io5";
 import "./Comments.css";
 import profile from "./profile.webp";
 function Comments({ isOpen, onClose }) {
+  const handlePost=()=>{
+    //this is for posting commen as soon as user posted something
+    
+  }
   return (
     <>
 
@@ -37,7 +41,9 @@ function Comments({ isOpen, onClose }) {
             <span>
               <LuFiles size="30" />
             </span>
-            <button className="ring-2 ring-Yellow text-lg font-normal text-white bg-Darkblue  w-[100px] h-[30px] rounded-[30px] ">
+            <button className="ring-2 ring-Yellow text-lg font-normal
+             text-white bg-Darkblue  w-[100px] h-[30px] rounded-[30px] " 
+             onClick={()=>handlePost()}>
               Post
             </button>
           </div>

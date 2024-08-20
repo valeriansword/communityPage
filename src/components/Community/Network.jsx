@@ -57,6 +57,9 @@ function Network() {
           CollegeName: "College Name",
         },
     ]
+    const handleFollow=()=>{
+      //this get activated when user clicks follow
+    }
   return (
     <div className="bg-[#f7d883] w-full h-full font-times max-sm:w-[100%] xl:pb-[300px]">
       <SideBarCommunity />
@@ -96,7 +99,7 @@ function Network() {
               <p className="font-thin text-sm text-white">{user.profession}</p>
              
               {/* <p className="font-thin text-sm text-gray-400">{user.CollegeName}</p> */}
-              <button className="w-full bg-Yellow border-2 border-Yellow text-DarkBlue rounded-md ">Follow </button>
+              <button className="w-full bg-Yellow border-2 border-Yellow text-DarkBlue rounded-md " onClick={()=>handleFollow()}>Follow </button>
   
           </div>
         

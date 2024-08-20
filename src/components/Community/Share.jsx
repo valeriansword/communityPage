@@ -23,6 +23,9 @@ function Share({ isOpen, onClose }) {
     },
    
   ];
+  const handleSend=()=>{
+    //this is for sharing post to other memebers
+  }
   return (
     <>
       {isOpen ? (
@@ -40,7 +43,7 @@ function Share({ isOpen, onClose }) {
             <div>
             <div className="flex mt-[20px]" key={user.id}>
             <span>
-            <img src={user.profile} className="rounded-full h-[30px] w-[30px] object-fit ml-[2px]"/>
+            <img src={user.profile} className="rounded-full h-[30px] w-[30px] object-fit ml-[2px] max-sm:mr-[50px]"/>
             </span>
             <div>
 
@@ -59,7 +62,9 @@ function Share({ isOpen, onClose }) {
           
     ))}
 
-<button className="ring-2 ring-Darkblue mt-[20px] text-lg font-normal text-white bg-Darkblue  w-[100px] h-[30px] rounded-[30px] ">
+<button className="ring-2 ring-Darkblue mt-[20px] text-lg
+ font-normal text-white bg-Darkblue  w-[100px] h-[30px] rounded-[30px] "
+ onClick={()=>handleSend()}>
               send
             </button>
 
