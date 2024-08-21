@@ -16,12 +16,13 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 
 
 import "./Message.css";
+import CreateGroupModal from "./CreateGroupModal";
 function Message() {
   const userInfo = [
     {
       id: 1,
       profile: profile2,
-      name: "Create Group",
+      name: "User One",
       recentMessage: "Tap to add your friends",
     },
     {
@@ -259,7 +260,7 @@ const handleSubmit=()=>{
   
    }
  
-
+   const [createGroupModal,setCreateGroupModal]=useState(false);
   return (
 
     <div className="bg-[#f7d883]  font-times h-full w-full max-sm:h-[100%] xl:pb-[300px]">
@@ -322,11 +323,14 @@ const handleSubmit=()=>{
 
 
             )))}
+            
            
             
             </div>
             <div className="flex justify-end  ">
-            <span className="ring-2 ring-Yellow bg-Yellow rounded-full cursor-pointer" onClick={()=>handleConfirmMember()}><TiTick size="25"/></span>
+               <span className="ring-2 ring-Yellow bg-Yellow rounded-full 
+                 cursor-pointer" onClick={()=>handleConfirmMember()}>
+                   <TiTick size="25"/></span>
             </div>
             <input
               text="text"
@@ -370,10 +374,26 @@ const handleSubmit=()=>{
             </>
 
           )}
-
+    <CreateGroupModal isOpen={createGroupModal} 
+        onClose={()=>setCreateGroupModal(false)}
+        userInfo2={userInfo2}
+        addMembers={addMembers}
+        handleRemoveMember={handleRemoveMember}
+        handleConfirmMember={handleConfirmMember}
+        handleUserforGroup={handleUserforGroup}
+        singleUser1={singleUser1}
+        handleGroup={handleGroup}
+        handleNone2={handleNone2}
+    />
           {!createGroup && (
             <>
-            <h1 className="text-lg font-semibold m-2 text-white">Messages</h1>
+            <div className="flex items-center justify-between" >
+              <h1 className="text-lg font-semibold m-2 text-white">Messages</h1>
+              <button className="ring-2 ring-Yellow bg-Yellow text-lg font-bold 
+              h-fit text-Darkblue rounded-md" onClick={()=>setCreateGroupModal(true)}>
+              Create Group</button>
+
+            </div>
             <input
               text="text"
               name="search"
@@ -381,16 +401,20 @@ const handleSubmit=()=>{
               autoComplete="off"
               className="w-[98%] m-2 px-3  py-2 font-semibold text-Darkblue placeholder-gray-400 text-lg rounded-[30px]  border-none ring-2 ring-gray-300 focus:ring-gray-500 focus:ring-2"
             />
-
+            
             {userInfo.map((user) => (
               <div
                 className="w-full hover:rounded "
-                onClick={() => handleUser(user.id)}
+                onClick={
+                  () => {
+                    handleUser(user.id);
+                                                       
+                  }}
               >
                 <div
                   key={user.id}
                   className="mt-[10px] ml-2 flex space-x-2 mb-[10px] cursor-pointer"
-                  onClick={()=>singleUser==1?handleGroup():handleNone()}
+                  onClick={()=>singleUser==1?"":handleNone()}
                 >
                   <span
                     className={
@@ -426,8 +450,8 @@ const handleSubmit=()=>{
           <div className={` ${mobileView?" max-sm:display ":" max-sm:hidden "}bg-Darkblue p-2  w-1/2 max-sm:w-[98%]  max-sm:h-full  rounded-lg border-none`}>
             {/* <h1 className="text-lg font-semibold m-2">JohnDoe</h1> */}
             <span className="md:hidden" onClick={()=>setMobileView(false)}><IoIosArrowRoundBack /></span>
-            {people[0].id == 1 ? (
-              <div className="h-full w-full flex flex-col justify-center items-center">
+            {/* {people[0].id == 1 ? ( */}
+              {/* <div className="h-full w-full flex flex-col justify-center items-center">
                 <span className="text-Yellow">
                   <IoPeopleSharp size="100" />
                 </span>
@@ -437,8 +461,8 @@ const handleSubmit=()=>{
                 <p className="text-gray-400 font-semibold text-lg text-white">
                   Invite your friends to join this community
                 </p>
-              </div>
-            ) : (
+              </div> 
+             ) : (*/}
               <div className="h-full w-full relative">
                 <div>
                   <div className="mt-[10px] ml-2 flex space-x-2 mb-[10px] ">
@@ -521,7 +545,7 @@ const handleSubmit=()=>{
                   </div>
                 </div>
               </div>
-            )}
+            
           </div>
         </div>
       </div>
